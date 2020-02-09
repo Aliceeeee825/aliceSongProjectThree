@@ -1,0 +1,73 @@
+.description{
+    width: 62%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3%;
+    // border: 2px solid $borderColor;
+}
+
+.startScreen{
+    position: relative;
+}
+
+.playButton{
+    text-align: center;
+    margin-top: 2%;
+    button{
+        border: 0;
+        padding: 0;
+        background: $backgroundColor;
+    }
+    i{
+        font-size: 15rem;
+        background-color: $backgroundColor;
+    }
+}
+
+.socialMedia{
+    position: fixed;
+    right: 8%;
+    bottom: 10%;
+    i{
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+}
+
+.gameInterface{
+    text-align: center;
+    width: 100%;
+    h4{
+        margin: 5% 1% 1% 1%;
+    }
+}
+
+.restart{
+    font-size: 1.2rem;
+    margin: 1%;
+}
+
+.arrows{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.arrow{
+    position: absolute;
+    background: $backgroundColor;
+    padding: 2% 5%;
+    i{
+        font-size: 15rem;
+        // border: 2px solid black;
+    }
+}
+
+.invisible{
+    display: none;
+}
+
+
+
+
