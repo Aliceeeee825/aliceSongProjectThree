@@ -8,10 +8,12 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .visuallyhidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
-$backgroundColor: #b2dbbf;
-$borderColor: #247ba0;
+$backgroundColor: #ffcdb2;
+$borderColor: #b5838d;
 $correctColor: #70c1b3;
-$incorrectColor:#ff1654;
+$incorrectColor:red;
+$textColor: black;
+$hoverColor: #e5989b;
 
 
 body{
@@ -29,6 +31,7 @@ body{
 h1, h2, h3, h4,p{
     margin: 0;
     padding: 0;
+    color: $textColor;
 }
 
 h1{
@@ -65,9 +68,18 @@ img{
 li{
     list-style-type: none;
     a{
-        color: black;
+        color: $textColor;
+    }
+    a:hover{
+        color: $hoverColor;
     }
 }
+
+button{
+        border: 0;
+        padding: 0;
+        background: $backgroundColor;
+    }
 
 button:hover,
 a:hover{

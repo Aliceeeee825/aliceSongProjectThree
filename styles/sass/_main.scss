@@ -13,24 +13,23 @@
 .playButton{
     text-align: center;
     margin-top: 2%;
-    button{
-        border: 0;
-        padding: 0;
-        background: $backgroundColor;
-    }
     i{
         font-size: 15rem;
         background-color: $backgroundColor;
+        color: $textColor;
+    }
+    i:hover{
+        color: $hoverColor;
     }
 }
 
 .socialMedia{
     position: fixed;
     right: 8%;
-    bottom: 10%;
+    bottom: 2.5%;
     i{
         font-size: 1.5rem;
-        line-height: 1.5;
+        line-height: 1.8;
     }
 }
 
@@ -44,7 +43,7 @@
 
 .restart{
     font-size: 1.2rem;
-    margin: 1%;
+    margin: 3%;
 }
 
 .arrows{
@@ -69,11 +68,11 @@
 }
 
 .correct{
-    color: green;
+    color: $correctColor;
 }
 
 .incorrect{
-    color:red;
+    color:$incorrectColor;
 }
 
 

@@ -238,7 +238,7 @@ html {
 body {
   height: 100vh;
   font-size: 62.5%;
-  background: #b2dbbf;
+  background: #ffcdb2;
 }
 
 .wrapper {
@@ -249,6 +249,7 @@ body {
 h1, h2, h3, h4, p {
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 h1 {
@@ -290,13 +291,23 @@ li a {
   color: black;
 }
 
+li a:hover {
+  color: #e5989b;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: #ffcdb2;
+}
+
 button:hover,
 a:hover {
   cursor: pointer;
 }
 
 header {
-  border-bottom: 5px dashed #247ba0;
+  border-bottom: 5px dashed #b5838d;
 }
 
 header .wrapper {
@@ -328,26 +339,25 @@ header .wrapper {
   margin-top: 2%;
 }
 
-.playButton button {
-  border: 0;
-  padding: 0;
-  background: #b2dbbf;
-}
-
 .playButton i {
   font-size: 15rem;
-  background-color: #b2dbbf;
+  background-color: #ffcdb2;
+  color: black;
+}
+
+.playButton i:hover {
+  color: #e5989b;
 }
 
 .socialMedia {
   position: fixed;
   right: 8%;
-  bottom: 10%;
+  bottom: 2.5%;
 }
 
 .socialMedia i {
   font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 .gameInterface {
@@ -361,7 +371,7 @@ header .wrapper {
 
 .restart {
   font-size: 1.2rem;
-  margin: 1%;
+  margin: 3%;
 }
 
 .arrows {
@@ -377,7 +387,7 @@ header .wrapper {
 
 .arrow {
   position: absolute;
-  background: #b2dbbf;
+  background: #ffcdb2;
   padding: 2% 5%;
 }
 
@@ -390,7 +400,7 @@ header .wrapper {
 }
 
 .correct {
-  color: green;
+  color: #70c1b3;
 }
 
 .incorrect {

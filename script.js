@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
     //generate random numbers from 1 to 4
     let randomNum = 0;
     const randomArrow = function(){
@@ -40,29 +42,29 @@ $(document).ready(function () {
         $('.description').hide();
         $('h4').removeClass('invisible');
         $(`.${direction}`).removeClass('invisible');
+        $('.restart').removeClass('invisible');
     });
 
+    const newDirection = function(direction){
+        $(`.${direction}`).addClass('invisible');
+        direction = directionGenerator();
+        $(`.${direction}`).removeClass('invisible');
+    }
+
     //check input 
-    // 37 = left 38 = up 39 = right 40 = down
-    //if direction left 
-                    //green
-                    //new direction
-                    //flag true
-                //else 
-                    //red
-                    //new direction
-                    //flag true 
+    
     // while (true){
-        let userInput = '';
+        let score = 0;
         document.addEventListener('keydown', function (event) {
+            let userInput = '';
             if (event.keyCode === 37) {
                 if (direction === 'right' ){
                     $(`.${direction}`).addClass('correct');
+                    score ++
+                    $('.scoreKeeper').html(`${score}`)
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('correct');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')
+                        newDirection(direction);
                     }, 500)
                 }
                 
@@ -70,9 +72,7 @@ $(document).ready(function () {
                     $(`.${direction}`).addClass('incorrect');
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('incorrect');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')
+                        newDirection(direction);
                     }, 500)
                 }
             }
@@ -80,66 +80,59 @@ $(document).ready(function () {
             else if (event.keyCode == 39) {
                 if (direction === 'left') {
                     $(`.${direction}`).addClass('correct');
+                    score++
+                    $('.scoreKeeper').html(`${score}`)
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('correct');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')}, 500)
+                        newDirection(direction)}, 500)
                 }
 
                 else {
                     $(`.${direction}`).addClass('incorrect');
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('incorrect');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')
+                        newDirection(direction)
                     }, 500)
                 }
             }
             else if (event.keyCode == 38) {
                 if (direction === 'down') {
                     $(`.${direction}`).addClass('correct');
+                    score++
+                    $('.scoreKeeper').html(`${score}`)
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('correct');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')}, 500)
+                        newDirection(direction)}, 500)
                 }
 
                 else {
                     $(`.${direction}`).addClass('incorrect');
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('incorrect');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')
+                        newDirection(direction)
                     }, 500)
                 }
             }
             else if (event.keyCode == 40) {
                 if (direction === 'up') {
                     $(`.${direction}`).addClass('correct');
+                    score++
+                    $('.scoreKeeper').html(`${score}`)
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('correct');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')}, 500)
+                        newDirection(direction)}, 500)
                 }
 
                 else {
                     $(`.${direction}`).addClass('incorrect');
                     setTimeout(() => {
                         $(`.${direction}`).removeClass('incorrect');
-                        $(`.${direction}`).addClass('invisible');
-                        direction = directionGenerator();
-                        $(`.${direction}`).removeClass('invisible')
+                        newDirection(direction)
                     }, 500)
                 }
             }
             //else
         });
-    // }
+    // } the end of while loop
 });
 
-//console.log('hi')
