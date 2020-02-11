@@ -75,4 +75,15 @@
     color:$incorrectColor;
 }
 
+.endingScreen{
+    text-align: center;
+    z-index: 99;
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    padding: 5%;
+    background-color: $popupBackground;
+    box-shadow: 20px 10px 5px $borderColor;
+}
+
 

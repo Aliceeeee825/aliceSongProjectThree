@@ -272,6 +272,7 @@ h3 {
 
 h4 {
   font-size: 1.7rem;
+  display: inline-block;
 }
 
 p {
@@ -287,11 +288,11 @@ li {
   list-style-type: none;
 }
 
-li a {
+a {
   color: black;
 }
 
-li a:hover {
+a:hover {
   color: #e5989b;
 }
 
@@ -405,4 +406,16 @@ header .wrapper {
 
 .incorrect {
   color: red;
+}
+
+.endingScreen {
+  text-align: center;
+  z-index: 99;
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  padding: 5%;
+  background-color: #ffb4a2;
+  -webkit-box-shadow: 20px 10px 5px #b5838d;
+          box-shadow: 20px 10px 5px #b5838d;
 }

@@ -73,12 +73,13 @@
     
             <!--MVP-->
             <section class="gameInterface">
+                <h4 class="invisible">Time: <span class="timeKeeper">90</span></h4>
                 <h4 class="invisible">Score: <span class="scoreKeeper">0</span></h4>
                 <div class="restart invisible">
                     <button><i class="fas fa-undo"></i></button>
                     <span class="visuallyhidden">restart</span>
                 </div>
-                <div class="arrows">
+                <div class="arrows gestureZone">
                     <div class="left arrow invisible">
                         <!-- <img src="assets/leftArrow.jpg" alt="A left arrow"> -->
                         <i class="fas fa-arrow-left"></i>
@@ -103,11 +104,19 @@
                         <span class="visuallyhidden">up</span>
                     </div>
                 </div>
+            </section> <!--game interface ends-->
+
+            <section class="endingScreen invisible">
+                <h2>Time's Up! Want to <a href="index.html">restart</a>?</h2>
             </section>
         </div> <!--wrapper-->
     </main>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- <div class="attribution-block"><a href="http://dig.ccmixter.org/files/admiralbob77/60919">Trillium Line</a> by Admiral
+        Bob (c) copyright 2020 Licensed under a Creative Commons <a
+            href="http://creativecommons.org/licenses/by/3.0/">Attribution (3.0)</a> license. Ft: apoxode</div> -->
 </body>
 </html>
