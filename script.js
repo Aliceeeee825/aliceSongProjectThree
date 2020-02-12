@@ -1,16 +1,17 @@
 $(document).ready(function () {
+    let isLevelTwo = false;
     //Strech goal: Timer
-    const timerMax = 90;
+    const timerMax = 3;
     let timer = timerMax;
+    $('.timeKeeper').html(`${timer}`);
     
-
-    const countdownFunction = function(){
+    const countdownFunction = function(level){
         const countdown = setInterval(() => {
             timer--;
             $('.timeKeeper').html(`${timer}`);
             if (timer <= 0) {
                 clearInterval(countdown)
-                $('.endingScreen').removeClass('invisible');
+                $('.'+ level).removeClass('invisible');
                 $(`.${direction}`).addClass('invisible');
             }
         }, 1000)
@@ -44,15 +45,11 @@ $(document).ready(function () {
         }
     };
 
-    // function sleep(ms) {
-    //     return new Promise(resolve => setTimeout(resolve, ms));
-    // }
-
     direction = directionGenerator()
     
     
     // play button disappear after clicked
-    $('button').on('click', function (e) {
+    $('.playButton').on('click', function (e) {
         e.preventDefault();
         $('.playButton').hide();
         $('.description').hide();
@@ -60,7 +57,7 @@ $(document).ready(function () {
         $(`.${direction}`).removeClass('invisible');
         $('.restart').removeClass('invisible');
         //timer
-        countdownFunction();
+        countdownFunction('levelTwo');
     });
 
     const newDirection = function(direction){
@@ -115,14 +112,16 @@ $(document).ready(function () {
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('correct');
                     newDirection(direction)
-                }, 500)
+                }, 300)
+                generateCross()
             }
             else{
                 $(`.${direction}`).addClass('incorrect');
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('incorrect');
                     newDirection(direction)
-                }, 500)
+                }, 300)
+                generateCross()
             }
         }
     });
@@ -138,8 +137,6 @@ $(document).ready(function () {
     let touchstartY = 0;
     let touchendX = 0;
     let touchendY = 0;
-
-    // const gestureZone = $('');
     
     window.addEventListener('touchstart', function (event) {
         touchstartX = event.changedTouches[0].screenX;
@@ -214,109 +211,92 @@ $(document).ready(function () {
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('correct');
                     newDirection(direction)
-                }, 500)
+                }, 300)
             }
             else {
                 $(`.${direction}`).addClass('incorrect');
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('incorrect');
                     newDirection(direction)
-                }, 500)
+                }, 300)
             }
         }
-        // if (right <= 0) {
-        //     console.log('Swiped left');
-        //     if (direction === 'left') {
-        //         $(`.${direction}`).addClass('correct');
-        //         score++
-        //         $('.scoreKeeper').html(`${score}`)
-        //         setTimeout(() => {
-        //             $(`.${direction}`).removeClass('correct');
-        //             newDirection(direction)
-        //         }, 500)
-        //     }
+    } // end of handle gesture 
 
-        //     else {
-        //         $(`.${direction}`).addClass('incorrect');
-        //         setTimeout(() => {
-        //             $(`.${direction}`).removeClass('incorrect');
-        //             newDirection(direction)
-        //         }, 500)
-        //     }
+
+    // level two
+    $('.levelTwo').on('click', function(e){
+        e.preventDefault(e);
+        isLevelTwo = true;
+        $('.levelTwo').addClass('invisible')
+        $('.timeKeeper').html(`${timerMax}`);
+        $(`.${direction}`).removeClass('invisible');
+        score = 0
+        $('.scoreKeeper').html(`${score}`);
+        //timer
+        timer = timerMax;
+        countdownFunction('levelThree');
+    })
+
+    let numOfCross = 0;
+    function generateCross(){
+        if (isLevelTwo){
+            const modifyCross = Math.floor(Math.random() * 3) - 1;
+            const top = Math.random() * window.innerHeight * 0.8 + 0.2 * window.innerHeight;
+            const left = Math.random() * window.innerWidth
+            console.log(modifyCross)
+            if (modifyCross > 0){
+                //add cross
+                $('ul').append(`<li class = "floatingCross"><i class="fas fa-times"></i></li>`)
+                $("li").last().css({top: top, left: left})
+                numOfCross ++
+                console.log(numOfCross)
+            }else if (modifyCross < 0 && numOfCross > 0){
+                //remove cross
+                $('li').last().remove();
+                numOfCross --
+                console.log(numOfCross)
+            }
         }
+    }
 
-    //     if (touchendX >= touchstartX) {
-    //         console.log('Swiped right');
-    //         if (direction === 'left') {
-    //             $(`.${direction}`).addClass('correct');
-    //             score++
-    //             $('.scoreKeeper').html(`${score}`)
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('correct');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-
-    //         else {
-    //             $(`.${direction}`).addClass('incorrect');
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('incorrect');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-    //     }
-
-    //     if (touchendY <= touchstartY) {
-    //         console.log('Swiped up');
-    //         if (direction === 'down') {
-    //             $(`.${direction}`).addClass('correct');
-    //             score++
-    //             $('.scoreKeeper').html(`${score}`)
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('correct');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-
-    //         else {
-    //             $(`.${direction}`).addClass('incorrect');
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('incorrect');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-    //     }
-
-    //     if (touchendY >= touchstartY) {
-    //         console.log('Swiped down');
-    //         if (direction === 'up') {
-    //             $(`.${direction}`).addClass('correct');
-    //             score++
-    //             $('.scoreKeeper').html(`${score}`)
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('correct');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-
-    //         else {
-    //             $(`.${direction}`).addClass('incorrect');
-    //             setTimeout(() => {
-    //                 $(`.${direction}`).removeClass('incorrect');
-    //                 newDirection(direction)
-    //             }, 500)
-    //         }
-    //     }
-
-    //     // if (touchendY === touchstartY) {
-    //     //     console.log('Tap');
-    //     // }
-    // }
-
+    // how many cross 
+    // if cross === 0, cannot substract
+    // remove: take one from list
+        //$('li').first().remove()
+    // add: add one to the list 
+        //ul append li.added${'.number'}
+        //$("li").last().css({top = top, left = left})
+    // do nothing
 
 
 
     
+    // if (numberOfCross === 1){
+    //     const top = Math.random() * window.innerHeight * 0.8 + 0.2 * window.innerHeight;
+    //     const left = Math.random() * window.innerWidth
+    //     $('ul').append(`<li class = "floatingCross"><i class="fas fa-times"></i></li>`)
+
+    // }
+
+
+
+    //level three
+    $('.levelThree').on('click', function (e) {
+        e.preventDefault(e);
+        $('.levelThree').addClass('invisible')
+        $('.timeKeeper').html(`${timerMax}`);
+        $(`.${direction}`).removeClass('invisible');
+        score = 0
+        $('.scoreKeeper').html(`${score}`);
+        //timer
+        timer = timerMax;
+        countdownFunction('endingScreen');
+    })
+
+
+
+
 
 
 }); // the end of the document ready

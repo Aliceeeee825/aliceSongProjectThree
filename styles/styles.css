@@ -383,17 +383,19 @@ header .wrapper {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: center;
 }
 
 .arrow {
-  position: absolute;
   background: #ffcdb2;
   padding: 2% 5%;
 }
 
 .arrow i {
   font-size: 15rem;
+}
+
+.overlay {
+  position: absolute;
 }
 
 .invisible {
@@ -408,14 +410,27 @@ header .wrapper {
   color: red;
 }
 
-.endingScreen {
+.endingScreen,
+.inbetweenLevel {
   text-align: center;
-  z-index: 99;
+  z-index: 9;
   position: absolute;
-  left: 30%;
   top: 50%;
   padding: 5%;
   background-color: #ffb4a2;
   -webkit-box-shadow: 20px 10px 5px #b5838d;
           box-shadow: 20px 10px 5px #b5838d;
+}
+
+.endingScreen {
+  left: 30%;
+}
+
+.inbetweenLevel {
+  left: 20%;
+}
+
+.floatingCross {
+  position: absolute;
+  z-index: 99;
 }

@@ -50,18 +50,21 @@
     position: relative;
     display: flex;
     justify-content: center;
-    text-align: center;
 }
 
 .arrow{
-    position: absolute;
     background: $backgroundColor;
     padding: 2% 5%;
     i{
         font-size: 15rem;
-        // border: 2px solid black;
     }
 }
+
+.overlay{
+    position: absolute;
+}
+
+// classes for js
 
 .invisible{
     display: none;
@@ -75,15 +78,27 @@
     color:$incorrectColor;
 }
 
-.endingScreen{
+.endingScreen,
+.inbetweenLevel{
     text-align: center;
-    z-index: 99;
+    z-index: 9;
     position: absolute;
-    left: 30%;
     top: 50%;
     padding: 5%;
     background-color: $popupBackground;
     box-shadow: 20px 10px 5px $borderColor;
 }
 
+.endingScreen{
+    left: 30%;
+}
 
+.inbetweenLevel{
+    left: 20%;
+}
+
+.floatingCross{
+    position:absolute;
+    z-index: 99;
+    
+}
