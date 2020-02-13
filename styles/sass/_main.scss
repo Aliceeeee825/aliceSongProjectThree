@@ -3,7 +3,6 @@
     margin: 0 auto;
     text-align: center;
     padding: 3%;
-    // border: 2px solid $borderColor;
 }
 
 .startScreen{
@@ -79,9 +78,9 @@
 }
 
 .endingScreen,
-.inbetweenLevel{
+.levelTwo{
     text-align: center;
-    z-index: 9;
+    z-index: 100;
     position: absolute;
     top: 50%;
     padding: 5%;
@@ -93,12 +92,100 @@
     left: 30%;
 }
 
-.inbetweenLevel{
-    left: 20%;
+.levelTwo{
+    left: 10%;
+    width: 80%;
 }
 
 .floatingCross{
     position:absolute;
     z-index: 99;
-    
+    font-size: 4rem;
+}
+
+.socialMediaRelocation{
+    right: 3%;
+    bottom: 10%;
+}
+
+
+//responsive design
+@media(max-width: 1065px){
+    .levelTwo{
+        width: 70%;
+    }
+    .socialMedia{
+        bottom: 5%
+    }
+}
+
+
+@media(max-width: 920px){
+    .levelTwo{
+        left: 10%;
+        z-index: 0;
+    }
+}
+
+@media(max-width: 850px){
+    .levelTwo{
+        top: 45%;
+        left: 5%;
+        z-index: -1;
+    }
+    .endingScreen{
+        left: 20%;
+    }
+}
+
+@media(max-width: 765px){
+    .levelTwo{
+        width: 80%;
+    }
+    .endingScreen{
+        left: 15%;
+    }
+}
+
+@media(max-width: 650px){
+    h1{
+        font-size: 4rem;
+    }
+    .description{
+        width: 80%;
+    }
+    .socialMedia{
+        bottom: 7%;
+    }
+    .levelTwo{
+        top: 40%;
+    }
+    .endingScreen{
+        width: 70%;
+    }
+}
+
+@media(max-width: 465px){
+    h1{
+        font-size: 3rem;
+        line-height: 1;
+    }
+    h2{
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 415px){
+    .socialMedia{
+        bottom: 0;
+        ul{
+            display: flex;
+            width: 100vw;
+            justify-content: space-evenly;
+        }
+    }
+
+    .levelTwo{
+        top: 35%;
+    }
 }
