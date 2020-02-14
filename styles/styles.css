@@ -235,6 +235,11 @@ html {
   overflow: hidden;
 }
 
+html,
+body {
+  overscroll-behavior-y: contain;
+}
+
 body {
   height: 100vh;
   font-size: 62.5%;
@@ -454,7 +459,6 @@ header .wrapper {
 @media (max-width: 920px) {
   .levelTwo {
     left: 10%;
-    z-index: 0;
   }
 }
 
@@ -462,7 +466,6 @@ header .wrapper {
   .levelTwo {
     top: 45%;
     left: 5%;
-    z-index: -1;
   }
   .endingScreen {
     left: 20%;

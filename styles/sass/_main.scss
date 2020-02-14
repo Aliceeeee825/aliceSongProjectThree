@@ -1,3 +1,13 @@
+header{
+    border-bottom: 5px dashed $borderColor;
+    .wrapper{
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .description{
     width: 62%;
     margin: 0 auto;
@@ -64,7 +74,6 @@
 }
 
 // classes for js
-
 .invisible{
     display: none;
 }
@@ -123,7 +132,6 @@
 @media(max-width: 920px){
     .levelTwo{
         left: 10%;
-        z-index: 0;
     }
 }
 
@@ -131,7 +139,6 @@
     .levelTwo{
         top: 45%;
         left: 5%;
-        z-index: -1;
     }
     .endingScreen{
         left: 20%;
@@ -156,6 +163,9 @@
     }
     .socialMedia{
         bottom: 7%;
+    }
+    .arrow i{
+        font-size: 10rem;
     }
     .levelTwo{
         top: 40%;

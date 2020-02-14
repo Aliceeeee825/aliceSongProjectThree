@@ -1,5 +1,11 @@
 $(document).ready(function () {
+    //sound effects
+    const correctSound = new Audio('assets/correct.mp3')
+    const falseSound = new Audio('assets/wrong.mp3')
+    
+    //flag for whether it is level two
     let isLevelTwo = false;
+    
     //Strech goal: Timer
     const timerMax = 30;
     let timer = timerMax;
@@ -59,14 +65,30 @@ $(document).ready(function () {
         $('.restart').removeClass('invisible');
         //timer
         countdownFunction('levelTwo');
+        // bgm.play()
     });
 
+    //random generate new directions
     const newDirection = function(direction){
         $(`.${direction}`).addClass('invisible');
         direction = directionGenerator();
         $(`.${direction}`).removeClass('invisible');
     }
 
+    // to make sure my determination will work
+    function oppositeDirection(direction){
+        if (direction === 'left'){
+            return 'right'
+        }else if(direction === 'right'){
+            return 'left'
+        }else if(direction === 'up'){
+            return 'down'
+        }else{
+            return 'top'
+        }
+    }
+
+    // to determine whether the key pressed matches the arrow showing 
     function determination(arrowDirection){
             if (isLevelTwo == false) {
                 //for level one
@@ -91,17 +113,18 @@ $(document).ready(function () {
                 }
                 
                 else if (numOfCross % 2 != 0) {
-                    if (direction === `${arrowDirection}`) {
-                        answer = false
+                    // for odd number of arrows
+                    if (direction === oppositeDirection(`${arrowDirection}`)) {
+                        answer = true
                     }
                     else {
-                        answer = true
+                        answer = false
                     }
                 }
             }
         }
 
-    //check input 
+    //take the input and check  
     let answer = null
     let score = 0;
     document.addEventListener('keydown', function (event) {
@@ -128,22 +151,26 @@ $(document).ready(function () {
             
         if(answer !== null){
             if(answer === true){
+                correctSound.play();
                 $(`.${direction}`).addClass('correct');
                 score++
                 $('.scoreKeeper').html(`${score}`)
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('correct');
                     newDirection(direction)
+                    generateCross()
                 }, 300)
-                generateCross()
+                
             }
             else{
+                falseSound.play();
                 $(`.${direction}`).addClass('incorrect');
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('incorrect');
                     newDirection(direction)
+                    generateCross()
                 }, 300)
-                generateCross()
+                
             }
         }
     });
@@ -171,46 +198,43 @@ $(document).ready(function () {
     }, false);
 
     function handleGesture() {
-        // let answer = null
         let up = touchstartY- touchendY
         let right = touchendX - touchstartX
         let y = Math.abs(up)
         let x = Math.abs(right)
-        if (y >= x && timer < timerMax){
-            // swipe in up dir
-            if (up >= 0){
-                // swipe up
-                determination('down');
-                console.log('up')
+        if (x > 5 && y > 5){
+            if (y >= x && timer < timerMax){
+                // swipe in up directions 
+                if (up >= 0){
+                    // swipe up
+                    determination('down')
+                }
+
+                else{
+                    //swipe down
+                    determination('up')
+                }
             }
 
-            else{
-                //swipe down
-                determination('up')
-                console.log('down')
+            else if (y < x && timer < timerMax){
+                //swipe in left right directions
+                if (right >= 0){
+                    //swipe right
+                    determination('left')
+                }
+                else{
+                    //swipe left 
+                    determination('right')
+                }
             }
-        }
-
-        if (y < x && timer < timerMax){
-            //swipe in left right directions
-            if (right >= 0){
-                //swipe right
-                determination('left')
-                console.log('left')
-            }
-            else{
-                //swipe left 
-                determination('right')
-                console.log('right')
-            }
-        }
-        console.log(answer)
+        }    
 
         if (answer !== null) {
             if (answer === true) {
                 $(`.${direction}`).addClass('correct');
                 score++
                 $('.scoreKeeper').html(`${score}`)
+                correctSound.play()
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('correct');
                     newDirection(direction)
@@ -218,6 +242,7 @@ $(document).ready(function () {
             }
             else {
                 $(`.${direction}`).addClass('incorrect');
+                falseSound.play()
                 setTimeout(() => {
                     $(`.${direction}`).removeClass('incorrect');
                     newDirection(direction)
@@ -241,6 +266,7 @@ $(document).ready(function () {
         countdownFunction('endingScreen');
     })
 
+    //random generate cross in random places in the browswer 
     let numOfCross = 0;
     function generateCross(){
         if (isLevelTwo){
@@ -249,7 +275,7 @@ $(document).ready(function () {
             const left = Math.random() * window.innerWidth * 0.8
             if (modifyCross > 0){
                 //add cross
-                $('ul').append(`<li class = "floatingCross"><i class="fas fa-times"></i></li>`)
+                $('.cross ul').append(`<li class = "floatingCross"><i class="fas fa-times"></i></li>`)
                 $("li").last().css({top: top, left: left})
                 numOfCross ++
             }else if (modifyCross < 0 && numOfCross > 0){

@@ -16,11 +16,15 @@ $textColor: black;
 $hoverColor: #e5989b;
 $popupBackground: #ffb4a2;
 
+html,
+body{
+    overscroll-behavior-y: contain;
+}
+// In the mobile version of my game, the user need to swipe down. This is to make the page won't get refreshed when swiped down. I know it is probably not the best appraoch to deal with the problem, but this is the only way I can come up with now.
 
 body{
     height: 100vh;
     font-size: 62.5%;
-    // line-height: 1.5;
     background: $backgroundColor;
 }
 
