@@ -199,3 +199,9 @@ header{
         top: 35%;
     }
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    header{
+        height: 17vh;
+    }
+}
