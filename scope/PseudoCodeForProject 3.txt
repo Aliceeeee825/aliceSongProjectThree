@@ -1,0 +1,43 @@
+﻿MVP
+
+
+1. The page has instructions and a start button in the middle of the screen
+2. When the user clicks the button, the button will disappear. Our first square is going to be there with a randomly generated arrow on it. 
+   1. const cubeToKeyborad = {‘up’: 38, ‘right’: 39, ‘down’: 37, ‘left’: 40} // these numbers are real keycode for arrow keys 
+   2. squareNum = random[1,4] //1=up 2=right 3=down 4=left
+   3. remove square[sqaureNum] class ‘hide’
+3. After the player press the keyboard, the input will be compared with the result and check if they push the wrong one. 
+4. If correct, score added and next square appear. 
+   1. score = $(‘scoreKeeper’)
+   2. if keyboard input == squareNum{
+score ++
+$(‘scoreKeeper’).text = score};
+                generate new direction and new square
+5. If the user clicked the “Restart”, it went back to step 1.
+
+
+
+
+Stretch goal:
+
+
+Timer:
+* Create a constant called timer and let it equals 90, which has the same value as timeKeeper in my HTML
+* timer = $(‘timeKeeper’’)
+* timer = 90
+* if timer == 0
+show text “Time’s up! Want to restart?”
+        else
+                timer = setInterval{ timer - 1 } every 1 second
+                $(“timeKeeper”).text(timer)
+level 2:
+        When the first 90 seconds are up, if the score >= 36,
+the other square’s invisible class is taken off
+original square move a bit right
+check if the input does not equal to either of it
+
+
+level 3:
+        When level 2 finished, if the score >= 80, enter level 3
+        Two more squares appear every time
+        check if the input does not equal to all of them

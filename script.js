@@ -4,6 +4,7 @@ $(document).ready(function () {
     const falseSound = new Audio('assets/wrong.mp3')
     
     //flag for whether it is level two
+    let isGameStarted = false;
     let isLevelTwo = false;
     
     //Strech goal: Timer
@@ -58,6 +59,7 @@ $(document).ready(function () {
     // click the play button
     $('.playButton').on('click', function (e) {
         e.preventDefault();
+        isGameStarted = true
         $('.playButton').hide();
         $('.description').hide();
         $('h4').removeClass('invisible');
@@ -65,14 +67,15 @@ $(document).ready(function () {
         $('.restart').removeClass('invisible');
         //timer
         countdownFunction('levelTwo');
-        // bgm.play()
     });
 
     //random generate new directions
     const newDirection = function(direction){
-        $(`.${direction}`).addClass('invisible');
-        direction = directionGenerator();
-        $(`.${direction}`).removeClass('invisible');
+        if (isGameStarted){
+            $(`.${direction}`).addClass('invisible');
+            direction = directionGenerator();
+            $(`.${direction}`).removeClass('invisible');
+        }
     }
 
     // to make sure my determination will work
@@ -83,7 +86,7 @@ $(document).ready(function () {
             return 'left'
         }else if(direction === 'up'){
             return 'down'
-        }else{
+        }else if(direction==='down'){
             return 'top'
         }
     }
@@ -148,8 +151,12 @@ $(document).ready(function () {
         else if (event.keyCode == 40) {
             determination('up')
         }
+
+        else{
+            answer = false
+        }
             
-        if(answer !== null){
+        if (answer !== null && isGameStarted){
             if(answer === true){
                 correctSound.play();
                 $(`.${direction}`).addClass('correct');

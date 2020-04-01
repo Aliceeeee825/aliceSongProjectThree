@@ -317,7 +317,7 @@ header {
 }
 
 header .wrapper {
-  height: 20vh;
+  height: 18vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -490,6 +490,9 @@ header .wrapper {
   }
   .socialMedia {
     bottom: 7%;
+  }
+  .arrow i {
+    font-size: 10rem;
   }
   .levelTwo {
     top: 40%;

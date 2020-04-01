@@ -1,0 +1,10 @@
+Description of Project: A not not game that gives directions to player. Player needs to press any other arrow keys.
+
+MVP: 
+The game logic works. The scorekeeper works properly. The player can restart it.
+
+Strech goals:
+Timer for 90 seconds and make sure game stops.
+After 90 seconds,  there will be level two with 2 direction challenge. The player needs to push the arrow button that is not either of them. 
+After another 90 seconds, level three will have 3 direction challenges. If the player wins, it will be a "YAYYAY" message.
+
